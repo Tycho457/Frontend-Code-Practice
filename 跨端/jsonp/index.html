@@ -1,0 +1,31 @@
+<!-- 前端代码 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JSONP 示例</title>
+</head>
+<body>
+	<h1>JSONP 示例</h1>
+	<p>点击下面的按钮获取数据：</p>
+	<button onclick="getData()">获取数据</button>
+
+	<script>
+		function getData() {
+			// 创建一个 script 元素
+			var script = document.createElement('script');
+
+			// 设置 script 的 src 属性，其中 callback 参数指定回调函数的名称
+			script.src = 'http://example.com/data?callback=handleData';
+
+			// 将 script 元素添加到页面中
+			document.body.appendChild(script);
+		}
+
+		function handleData(data) {
+			// 处理获取到的数据
+			console.log(data);
+		}
+	</script>
+</body>
+</html>
