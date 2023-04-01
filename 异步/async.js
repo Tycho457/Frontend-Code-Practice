@@ -9,3 +9,6 @@ async function loadJson(url) {
 }
 
 loadJson("https://example.com").catch(alert)
+
+
+
