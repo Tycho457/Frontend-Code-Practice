@@ -10,6 +10,7 @@ var LRUCache = function(capacity){
 
 // get 有key，缓存value，删掉key，再set一遍
 LRUCache.prototype.get = function(key){
+    // 这里的意义在于：更新此key-value在map对象中的顺序
     if(this.map.has(key)){
         let temp = this.map.get(key);
         this.map.delete(key);
@@ -19,6 +20,7 @@ LRUCache.prototype.get = function(key){
         return -1;
     }
 }
+
 // set 有key更新，无key加入，最后检查长度
 LRUCache.prototype.put = function(key,value){
     if(this.map.has(key)){
