@@ -7,6 +7,7 @@
 
 <script lang="ts" setup>
 import navbar from './components/navbar.vue'
+
 </script>
 
 <style lang="less">
