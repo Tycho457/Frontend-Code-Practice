@@ -12,7 +12,7 @@ if(j>oldEnd && j<=newEnd){
     let moved = false // 是否需要移动节点
     let pos = 0 // 遍历旧组遇到最大的索引值k
 
-    const keyIndex = {},
+    const keyIndex = {}
     for(let i = newStart;i <= newEnd; i++){
         keyIndex[newChildren[i].key] = i;
     }
