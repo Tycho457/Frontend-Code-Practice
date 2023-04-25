@@ -50,3 +50,4 @@ function setCurrentInstance(instance) {
     currentInstance = instance
 }
 function mountComponent(vnode,container,anchor)
+
