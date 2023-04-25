@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        无任何效果的input:
+        <input id="none" value="">
+    </div>
+    <div>
+        debounce的input:
+        <input id="debounce" value="">
+    </div>
+    <div>
+        throttle的input:
+        <input id="throttle" value="">
+    </div>
+
+</body>
+
+<script>
+    function ajax(content) {
+        console.log("ajax request" + content);
+    }
+    let input = document.getElementById('none')
+    input.addEventListener("keyup", function (e) {
+        ajax(e.target.value)
+    })
+
+    let debounce_input = document.getElementById('debounce')
+    const debounceAjax = debounce(ajax, 500)
+    debounce_input.addEventListener("keyup", function (e) {
+        debounceAjax(e.target.value)
+    })
+
+    let throttle_input = document.getElementById('throttle')
+    const throttleAjax = throttle(ajax, 500)
+    throttle_input.addEventListener('keyup', function (e) {
+        throttleAjax(e.target.value)
+    })
+
+    // debounce
+    function debounce(func, delay) {
+        let timeoutId = null
+        return function (...args) {
+            let that = this;
+            if (timeoutId) clearTimeout(timeoutId);
+            timeoutId = setTimeout(function () {
+                func.call(that, args)
+            }, delay)
+        }
+    }
+
+    // throttle
+    function throttle(func, delay) {
+        let lastTime = 0;
+        return function (...args) {
+            let that = this
+            let currentTime = new Date().getTime()
+            if (currentTime - lastTime > delay) {
+                func.call(that, args)
+                lastTime = currentTime
+            }
+        }
+    }
+
+</script>
+
+</html>
